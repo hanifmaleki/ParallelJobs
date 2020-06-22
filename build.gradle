@@ -1,0 +1,37 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    id 'groovy'
+}
+
+group = 'com.hanifmaleki.assignment'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.spockframework:spock-core:1.1-groovy-2.4'
+    testImplementation 'org.spockframework:spock-spring:1.1-groovy-2.4'
+}
+
+test {
+    useJUnitPlatform()
+}
